@@ -1,0 +1,1257 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="light dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="フレーズ集">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-180.png">
+<meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<title>海外旅行攻略フレーズ30選</title>
+<!-- 型：bonus/packs/app/index.html。パックごとに data.js と audio/ を差し替えて使う。ビルドは bonus/packs/tools/build.py -->
+<style>
+/* ---------- tokens ----------
+   tint = 朱（しゅ）。赤ペンの丸＝「言えた」の色。1色だけ使う。 */
+:root{
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Segoe UI", "Yu Gothic UI", "Meiryo", "Noto Sans JP", "Noto Sans CJK JP", Roboto, sans-serif;
+  --bg: #F2F2F7;
+  --cell: #FFFFFF;
+  --sheet: #FFFFFF;
+  --label: #000000;
+  --label2: rgba(60,60,67,.62);
+  --label3: rgba(60,60,67,.32);
+  --on-label: #FFFFFF;
+  --sep: rgba(60,60,67,.24);
+  --fill: rgba(118,118,128,.12);
+  --fill2: rgba(120,120,128,.20);
+  --press: rgba(0,0,0,.06);
+  --thumb: #FFFFFF;
+  --switch-off: rgba(120,120,128,.16);
+  --tint: #CF3A20;
+  --tint-fill: #CF3A20;
+  --tint-soft: rgba(207,58,32,.09);
+  --tint-track: rgba(207,58,32,.16);
+  --bar: rgba(242,242,247,.88);
+  --glass: rgba(252,252,253,.80);
+  --glass-edge: rgba(0,0,0,.07);
+  --float: 0 10px 30px rgba(0,0,0,.12), 0 1px 3px rgba(0,0,0,.06);
+  --scrim: rgba(0,0,0,.32);
+  --g: 16px;
+  --r: 20px;
+  --ease: cubic-bezier(.32,.72,0,1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #000000; --cell: #1C1C1E; --sheet: #1C1C1E;
+    --label: #FFFFFF; --label2: rgba(235,235,245,.62); --label3: rgba(235,235,245,.32); --on-label: #000000;
+    --sep: rgba(84,84,88,.65); --fill: rgba(118,118,128,.24); --fill2: rgba(120,120,128,.36);
+    --press: rgba(255,255,255,.08); --thumb: #636366; --switch-off: rgba(120,120,128,.32);
+    --tint: #FF6A4D; --tint-fill: #D84227; --tint-soft: rgba(255,106,77,.13); --tint-track: rgba(255,106,77,.22);
+    --bar: rgba(14,14,16,.86); --glass: rgba(40,40,43,.78); --glass-edge: rgba(255,255,255,.09);
+    --float: 0 10px 30px rgba(0,0,0,.5), 0 1px 3px rgba(0,0,0,.3); --scrim: rgba(0,0,0,.55);
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #000000; --cell: #1C1C1E; --sheet: #1C1C1E;
+  --label: #FFFFFF; --label2: rgba(235,235,245,.62); --label3: rgba(235,235,245,.32); --on-label: #000000;
+  --sep: rgba(84,84,88,.65); --fill: rgba(118,118,128,.24); --fill2: rgba(120,120,128,.36);
+  --press: rgba(255,255,255,.08); --thumb: #636366; --switch-off: rgba(120,120,128,.32);
+  --tint: #FF6A4D; --tint-fill: #D84227; --tint-soft: rgba(255,106,77,.13); --tint-track: rgba(255,106,77,.22);
+  --bar: rgba(14,14,16,.86); --glass: rgba(40,40,43,.78); --glass-edge: rgba(255,255,255,.09);
+  --float: 0 10px 30px rgba(0,0,0,.5), 0 1px 3px rgba(0,0,0,.3); --scrim: rgba(0,0,0,.55);
+  color-scheme: dark;
+}
+:root[data-theme="light"]{ color-scheme: light; }
+@media (min-width: 600px){ :root{ --g: 20px; } }
+
+/* ---------- base ---------- */
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; background:var(--bg); }
+body{
+  font-family:var(--font); font-size:17px; line-height:1.3;
+  background:var(--bg); color:var(--label);
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  min-height:100vh; min-height:100dvh;
+}
+button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+svg{ display:block; }
+[hidden]{ display:none !important; }
+.vh{ position:absolute !important; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; }
+:focus{ outline:none; }
+:focus-visible{ outline:3px solid var(--tint); outline-offset:2px; }
+html.locked, html.locked body{ overflow:hidden; }
+
+.col{ max-width:640px; margin-inline:auto; padding-left:env(safe-area-inset-left); padding-right:env(safe-area-inset-right); }
+.page{ overflow-x:clip; padding-bottom:calc(104px + env(safe-area-inset-bottom)); }
+body.has-mini .page, body.has-hint .page{ padding-bottom:calc(176px + env(safe-area-inset-bottom)); }
+
+/* ---------- nav bar (large title collapse) ---------- */
+.nav{
+  position:fixed; z-index:15; top:0; left:0; right:0;
+  height:calc(44px + env(safe-area-inset-top)); padding-top:env(safe-area-inset-top);
+  display:flex; align-items:center; justify-content:center;
+  background:var(--bar);
+  -webkit-backdrop-filter:blur(20px) saturate(180%); backdrop-filter:blur(20px) saturate(180%);
+  opacity:0; visibility:hidden; transition:opacity .18s linear, visibility 0s .18s;
+}
+.nav::after{ content:""; position:absolute; left:0; right:0; bottom:0; border-bottom:.5px solid var(--sep); transition:opacity .15s; }
+body.collapsed .nav{ opacity:1; visibility:visible; transition:opacity .18s linear; }
+body.stuck .nav::after{ opacity:0; }
+.nav-title{
+  max-width:min(72%, 520px); height:44px; padding:0 8px;
+  font-size:17px; font-weight:600; letter-spacing:-.01em;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+/* ---------- hero ---------- */
+.hero{ padding:calc(env(safe-area-inset-top) + 14px) calc(var(--g) + 4px) 0; }
+.hero-top{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.eyebrow{ font-size:13px; line-height:18px; font-weight:600; color:var(--label2); letter-spacing:.02em; }
+.lt{
+  margin-top:6px; font-size:24px; line-height:30px; font-weight:700; letter-spacing:.005em;
+  font-feature-settings:"palt"; word-break:keep-all; overflow-wrap:anywhere; text-wrap:balance;
+}
+.prog{ display:flex; align-items:center; gap:7px; font-size:13px; line-height:20px; color:var(--label2); font-variant-numeric:tabular-nums; }
+.prog .n{ color:var(--label); font-weight:600; }
+.ring{ width:18px; height:18px; flex:none; transform:rotate(-90deg); }
+.ring circle{ fill:none; stroke-width:2.6; }
+.ring .tr{ stroke:var(--fill2); }
+.ring .fg{ stroke:var(--tint); stroke-linecap:round; transition:stroke-dashoffset .5s var(--ease); }
+
+/* ---------- palette (segmented, sticky) ---------- */
+.palette{ position:sticky; z-index:14; top:calc(44px + env(safe-area-inset-top)); margin-top:10px; }
+.palette::after{ content:""; position:absolute; left:0; right:0; bottom:0; border-bottom:.5px solid var(--sep); opacity:0; }
+body.stuck .palette{ background:var(--bar); -webkit-backdrop-filter:blur(20px) saturate(180%); backdrop-filter:blur(20px) saturate(180%); }
+body.stuck .palette::after{ opacity:1; }
+.palette .col > div{ padding:2px 0; }
+
+.seg{
+  --n:3; --i:0;
+  position:relative; display:grid; grid-auto-flow:column; grid-auto-columns:1fr;
+  height:36px; padding:2px; border-radius:999px; background:var(--fill);
+}
+.seg .thumb{
+  position:absolute; top:2px; bottom:2px; left:2px; width:calc((100% - 4px) / var(--n));
+  border-radius:999px; background:var(--thumb);
+  box-shadow:0 3px 8px rgba(0,0,0,.12), 0 3px 1px rgba(0,0,0,.04), 0 0 0 .5px rgba(0,0,0,.04);
+  transform:translateX(calc(100% * var(--i))); transition:transform .34s var(--ease);
+}
+.seg button{ position:relative; z-index:1; font-size:14px; font-weight:500; letter-spacing:-.005em; border-radius:999px; }
+.seg button::after{ content:""; position:absolute; left:0; right:0; top:-5px; bottom:-5px; }
+.seg button[aria-selected="true"], .seg button[aria-checked="true"]{ font-weight:600; }
+.seg button:focus-visible{ outline-offset:-1px; }
+.seg-sm{ height:32px; width:184px; flex:none; }
+.seg-sm button{ font-size:13px; }
+.seg-sm button::after{ top:-6px; bottom:-6px; }
+
+/* ---------- chips ---------- */
+.chips{ position:relative; display:flex; gap:8px; overflow-x:auto; padding:6px var(--g) 6px; scrollbar-width:none; overscroll-behavior-x:contain; }
+.chips::-webkit-scrollbar{ display:none; }
+.chip{
+  position:relative; flex:none; height:34px; padding:0 15px; border-radius:17px;
+  background:var(--fill); font-size:15px; font-weight:500; white-space:nowrap;
+}
+.chip::after{ content:""; position:absolute; left:-4px; right:-4px; top:-5px; bottom:-5px; }
+.chip .c{ margin-left:5px; color:var(--label2); font-variant-numeric:tabular-nums; }
+.chip[aria-pressed="true"]{ background:var(--label); color:var(--on-label); font-weight:600; }
+.chip[aria-pressed="true"] .c{ color:inherit; opacity:.7; }
+
+/* ---------- tools (count + hide toggles) ---------- */
+.tools{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin:14px calc(var(--g) + 4px) 0; }
+.count{ font-size:13px; line-height:18px; color:var(--label2); font-variant-numeric:tabular-nums; }
+.toggles{ display:flex; gap:8px; margin-left:auto; }
+.tg{
+  position:relative; height:32px; padding:0 13px; border-radius:16px;
+  background:var(--fill); font-size:13px; font-weight:600; white-space:nowrap;
+}
+.tg::after{ content:""; position:absolute; left:-4px; right:-4px; top:-6px; bottom:-6px; }
+.tg[aria-pressed="true"]{ background:var(--label); color:var(--on-label); }
+
+/* ---------- inset grouped list ---------- */
+.sec-h{
+  margin:26px calc(var(--g) + 4px) 8px; font-size:20px; line-height:25px; font-weight:700;
+  letter-spacing:.01em; font-feature-settings:"palt";
+}
+.tools + #list .sec:first-child .sec-h{ margin-top:18px; }
+.group{ list-style:none; margin:0 var(--g); background:var(--cell); border-radius:var(--r); overflow:hidden; }
+.group > li{ position:relative; }
+.group > li + li::before{ content:""; position:absolute; z-index:1; top:0; right:0; left:var(--inset, 54px); border-top:.5px solid var(--sep); }
+.row{
+  position:relative; display:flex; align-items:center; gap:12px;
+  width:100%; min-height:66px; padding:11px 14px 11px 12px; text-align:left;
+  transition:background-color .2s;
+}
+.row:active{ background:var(--press); transition:none; }
+@media (hover:hover){ .row:hover{ background:var(--press); } }
+.row:focus-visible{ outline-offset:-3px; border-radius:var(--r); }
+.lead{ flex:none; align-self:flex-start; width:30px; height:22px; display:flex; align-items:center; justify-content:center; }
+.num{ font-size:15px; color:var(--label2); font-variant-numeric:tabular-nums; }
+.lead .ck{ display:none; width:20px; height:20px; color:var(--tint); }
+.bars{ display:none; align-items:flex-end; gap:2px; height:13px; }
+.bars i{ display:block; width:3px; height:100%; border-radius:1.5px; background:var(--tint); transform-origin:50% 100%; }
+.bars i:nth-child(1){ transform:scaleY(.45); }
+.bars i:nth-child(2){ transform:scaleY(.95); }
+.bars i:nth-child(3){ transform:scaleY(.65); }
+.row.done .num{ display:none; }
+.row.done .ck{ display:block; }
+.row.playing .lead > *, .mode-listen .row.cur .lead > *{ display:none; }
+.row.playing .bars, .mode-listen .row.cur .bars{ display:flex; }
+.row.playing .bars i{ animation:eq .9s ease-in-out infinite; }
+.row.playing .bars i:nth-child(2){ animation-delay:-.3s; }
+.row.playing .bars i:nth-child(3){ animation-delay:-.6s; }
+@keyframes eq{ 0%,100%{ transform:scaleY(.3); } 50%{ transform:scaleY(1); } }
+.mode-listen .row.cur{ background:var(--tint-soft); }
+
+.txt{ flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
+.en{ font-size:17px; line-height:22px; letter-spacing:-.012em; overflow-wrap:anywhere; }
+.ja{ font-size:15px; line-height:20px; color:var(--label2); overflow-wrap:anywhere; }
+.pt{ font-size:13px; line-height:18px; color:var(--tint); font-weight:500; }
+.ppt{ margin-top:8px; font-size:15px; line-height:21px; color:var(--tint); font-weight:500; }
+.t{ border-radius:5px; -webkit-box-decoration-break:clone; box-decoration-break:clone; transition:background-color .2s, color .2s; }
+.hide-en .row:not(.cur) .en .t, .hide-en .row:not(.cur) .en .t *,
+.hide-ja .row:not(.cur) .ja .t{ color:transparent; background:var(--fill2); }
+.play{ flex:none; width:30px; height:30px; border-radius:50%; display:grid; place-items:center; background:var(--tint-soft); color:var(--tint); }
+.play svg{ width:13px; height:13px; }
+.play .ip{ margin-left:2px; }
+.play .ia{ display:none; }
+.mode-listen .row.cur.playing .play .ip{ display:none; }
+.mode-listen .row.cur.playing .play .ia{ display:block; }
+
+.foot{ margin:12px calc(var(--g) + 4px) 0; font-size:13px; line-height:18px; color:var(--label2); }
+
+.empty{ margin:22px var(--g) 0; padding:36px 24px; background:var(--cell); border-radius:var(--r); text-align:center; }
+.empty h2{ font-size:17px; line-height:22px; font-weight:600; }
+.empty p{ margin-top:6px; font-size:15px; line-height:21px; color:var(--label2); word-break:keep-all; overflow-wrap:anywhere; }
+
+/* ---------- listen settings ---------- */
+.form{ margin-top:14px; }
+.form > li{ display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:52px; padding:8px 16px 8px 20px; }
+.form{ --inset:20px; }
+label.frow{ cursor:pointer; }
+.flabel{ min-width:0; font-size:17px; line-height:22px; }
+.flabel small{ display:block; margin-top:1px; font-size:13px; line-height:18px; color:var(--label2); }
+.switch{ position:relative; flex:none; width:51px; height:31px; }
+.switch input{ position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:pointer; }
+.switch span{ position:absolute; inset:0; border-radius:16px; background:var(--switch-off); transition:background-color .25s; pointer-events:none; }
+.switch span::after{
+  content:""; position:absolute; top:2px; left:2px; width:27px; height:27px; border-radius:50%;
+  background:#fff; box-shadow:0 3px 8px rgba(0,0,0,.15), 0 3px 1px rgba(0,0,0,.06);
+  transition:transform .3s var(--ease);
+}
+.switch input:checked + span{ background:var(--tint-fill); }
+.switch input:checked + span::after{ transform:translateX(20px); }
+.switch input:focus-visible + span{ outline:3px solid var(--tint); outline-offset:2px; }
+
+.btn{
+  position:relative; display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  height:50px; padding:0 22px; border-radius:25px; font-size:17px; font-weight:600; letter-spacing:-.01em;
+  transition:opacity .15s, transform .15s;
+}
+.btn:active{ opacity:.72; }
+.btn svg{ width:16px; height:16px; }
+.btn-tint{ background:var(--tint-fill); color:#fff; }
+.btn-gray{ background:var(--fill); color:var(--label); }
+.btn-wide{ display:flex; width:calc(100% - 2 * var(--g)); margin:14px var(--g) 0; }
+
+/* ---------- practice ---------- */
+.pcard{ margin:16px var(--g) 0; padding:22px 22px 26px; background:var(--cell); border-radius:24px; }
+.pmeta{ display:flex; justify-content:space-between; gap:12px; font-size:13px; line-height:18px; font-weight:600; color:var(--label2); font-variant-numeric:tabular-nums; }
+.pmeta .wk{ color:var(--tint); margin-left:8px; }
+.pja{ margin-top:22px; font-size:26px; line-height:36px; font-weight:700; font-feature-settings:"palt"; letter-spacing:.01em; }
+.pen-wrap{ margin-top:22px; padding-top:20px; border-top:.5px solid var(--sep); }
+.pen{ font-size:32px; line-height:36px; font-weight:600; letter-spacing:-.02em; text-wrap:balance; overflow-wrap:anywhere; }
+.replay{ display:inline-flex; align-items:center; gap:6px; height:44px; margin:10px 0 -12px -2px; padding:0 2px; color:var(--tint); font-size:15px; font-weight:600; }
+.replay svg{ width:20px; height:20px; }
+.pactions{ display:flex; gap:10px; margin:16px var(--g) 0; }
+.pactions .btn{ flex:1; }
+.pdone{ margin:16px var(--g) 0; padding:34px 24px 28px; background:var(--cell); border-radius:24px; text-align:center; }
+.pdone h2{ font-size:22px; line-height:28px; font-weight:700; }
+.pdone p{ margin-top:8px; font-size:15px; color:var(--label2); font-variant-numeric:tabular-nums; }
+.pdone .acts{ display:flex; flex-direction:column; gap:10px; margin-top:24px; }
+
+/* ---------- tab bar (floating glass, Apple Music の下の帯) ---------- */
+.tabbar{
+  position:fixed; z-index:21; left:0; right:0; margin:0 auto;
+  bottom:calc(10px + env(safe-area-inset-bottom));
+  width:min(calc(100% - 24px), 520px); height:64px; border-radius:32px; padding:5px;
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:2px;
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(24px) saturate(190%); backdrop-filter:blur(24px) saturate(190%);
+  box-shadow:var(--float), inset 0 0 0 .5px var(--glass-edge);
+}
+.tab{
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
+  border-radius:27px; color:var(--label); font-size:11px; line-height:13px; font-weight:600; letter-spacing:.01em;
+  transition:background-color .25s var(--ease), color .2s;
+}
+.tab svg{ width:24px; height:24px; }
+.tab[aria-selected="true"]{ color:var(--tint); background:var(--fill); }
+.tab:active{ background:var(--fill2); }
+.tab:focus-visible{ outline-offset:-3px; }
+
+/* ---------- mini player (floating glass, タブの上に浮く) ---------- */
+.mini{
+  position:fixed; z-index:20; left:0; right:0; margin:0 auto;
+  bottom:calc(82px + env(safe-area-inset-bottom));
+  width:min(calc(100% - 24px), 520px); height:60px; border-radius:30px;
+  display:flex; align-items:center; padding-right:8px;
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(24px) saturate(190%); backdrop-filter:blur(24px) saturate(190%);
+  box-shadow:var(--float), inset 0 0 0 .5px var(--glass-edge);
+  transition:transform .45s var(--ease), opacity .3s;
+}
+.mini.off{ transform:translateY(24px); opacity:0; pointer-events:none; }
+.mini-open{ flex:1; min-width:0; height:100%; padding:0 10px 0 22px; border-radius:30px 0 0 30px; text-align:left; display:flex; flex-direction:column; justify-content:center; gap:1px; }
+.mini-open:focus-visible{ outline-offset:-3px; }
+.mini-en{ font-size:15px; line-height:20px; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; letter-spacing:-.01em; }
+.mini-ja{ font-size:13px; line-height:17px; color:var(--label2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.ib{ position:relative; flex:none; width:44px; height:44px; border-radius:50%; display:grid; place-items:center; color:var(--label); }
+.ib:active{ background:var(--press); }
+.ib svg{ width:22px; height:22px; }
+.ib .i-fwd{ width:26px; }
+
+/* ---------- ホーム画面の案内（初回だけ。再生バーと同じ位置） ---------- */
+.hint{
+  position:fixed; z-index:19; left:0; right:0; margin:0 auto;
+  bottom:calc(82px + env(safe-area-inset-bottom));
+  width:min(calc(100% - 24px), 520px); min-height:60px; border-radius:22px;
+  display:flex; align-items:center; gap:4px; padding:10px 6px 10px 18px;
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(24px) saturate(190%); backdrop-filter:blur(24px) saturate(190%);
+  box-shadow:var(--float), inset 0 0 0 .5px var(--glass-edge);
+}
+.hint-tx{ flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
+.hint-tx b{ font-size:14px; line-height:19px; font-weight:600; letter-spacing:-.005em; word-break:keep-all; overflow-wrap:anywhere; }
+.hint-tx span{ word-break:keep-all; overflow-wrap:anywhere; }
+.hint-tx span{ font-size:12px; line-height:17px; color:var(--label2); }
+.hint .ib svg{ width:14px; height:14px; color:var(--label2); }
+
+/* ---------- now playing sheet ---------- */
+.scrim{ position:fixed; z-index:30; inset:0; background:var(--scrim); opacity:0; transition:opacity .4s; pointer-events:none; }
+.scrim.open{ opacity:1; pointer-events:auto; }
+.sheet{
+  position:fixed; z-index:31; left:0; right:0; bottom:0; margin:0 auto;
+  top:calc(env(safe-area-inset-top) + 10px); width:min(100%, 640px);
+  display:flex; flex-direction:column;
+  background:var(--sheet); border-radius:28px 28px 0 0;
+  padding:0 max(24px, env(safe-area-inset-right)) calc(18px + env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
+  overflow-y:auto; overscroll-behavior:contain;
+  transform:translateY(110vh); transition:transform .5s var(--ease);
+  box-shadow:0 -1px 0 var(--glass-edge);
+}
+.sheet.open{ transform:none; }
+.sheet.drag{ transition:none; }
+@media (min-width:700px) and (min-height:700px){
+  .sheet{ top:28px; bottom:28px; height:min(760px, calc(100% - 56px)); margin:auto; border-radius:28px; padding-bottom:24px; }
+  .s-art{ max-height:300px; }
+}
+.grab{ flex:none; width:36px; height:5px; margin:7px auto 0; border-radius:3px; background:var(--label3); }
+.s-top{ flex:none; display:grid; grid-template-columns:44px 1fr 44px; align-items:center; margin:4px -6px 0; }
+.s-close{ width:44px; height:44px; display:grid; place-items:center; }
+.s-close span{ width:34px; height:34px; border-radius:50%; display:grid; place-items:center; background:var(--fill); color:var(--label2); }
+.s-close svg{ width:16px; height:16px; }
+.s-meta{ text-align:center; font-size:13px; line-height:18px; font-weight:600; color:var(--label2); font-variant-numeric:tabular-nums; }
+/* 目玉：フレーズそのものをジャケットの位置に組む。枠いっぱいまで大きく、行送りは詰めて、下端をそろえる */
+.s-main{ flex:1 1 auto; display:flex; flex-direction:column; justify-content:center; min-height:0; }
+.s-art{ position:relative; flex:1 1 0; min-height:190px; max-height:520px; margin-top:8px; }
+.s-en{
+  position:absolute; left:0; right:0; bottom:0;
+  font-size:48px; line-height:1.04; font-weight:600; letter-spacing:-.022em;
+  text-wrap:balance; overflow-wrap:normal; -webkit-hyphens:none; hyphens:none;
+}
+.s-en.brk{ overflow-wrap:anywhere; }
+.s-ja{ flex:none; margin-top:18px; font-size:19px; line-height:26px; color:var(--label2); white-space:pre-line; }
+.s-prog{ flex:none; margin-top:30px; }
+.segs{ display:flex; gap:4px; height:6px; }
+.segs i{ position:relative; display:block; flex:1 1 0; min-width:6px; height:6px; border-radius:3px; overflow:hidden; background:var(--fill2); }
+.segs i u{ position:absolute; inset:0; background:var(--label); opacity:.85; transform-origin:0 50%; transform:scaleX(0); }
+.segs i.g{ background:var(--tint-track); }
+.segs i.g u{ background:var(--tint); opacity:1; }
+.s-labels{ display:flex; justify-content:space-between; height:30px; padding-top:8px; font-size:12px; line-height:16px; font-weight:600; color:var(--label2); font-variant-numeric:tabular-nums; }
+.s-labels .now-g{ color:var(--tint); }
+.s-tr{ flex:none; display:flex; align-items:center; justify-content:center; gap:clamp(28px, 11vw, 56px); height:96px; margin-top:6px; }
+.tb{ position:relative; display:grid; place-items:center; width:64px; height:64px; border-radius:50%; color:var(--label); transition:transform .15s, background-color .15s; }
+.tb:active{ transform:scale(.9); background:var(--press); }
+.tb:disabled{ opacity:.28; cursor:default; }
+.tb:disabled:active{ transform:none; background:none; }
+.tb svg{ width:36px; height:30px; }
+.tb.big{ width:84px; height:84px; }
+.tb.big svg{ width:46px; height:46px; }
+.s-opts{ flex:none; display:flex; justify-content:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.opt{ position:relative; height:36px; padding:0 14px; border-radius:18px; background:var(--fill); font-size:13px; font-weight:600; white-space:nowrap; font-variant-numeric:tabular-nums; }
+.opt::after{ content:""; position:absolute; left:-3px; right:-3px; top:-4px; bottom:-4px; }
+.opt .k{ color:var(--label2); font-weight:500; margin-right:5px; }
+
+/* ---------- motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{ transition-duration:.01ms !important; animation:none !important; }
+  .sheet{ transform:none; opacity:0; transition:opacity .01ms; }
+  .sheet.open{ opacity:1; }
+}
+</style>
+</head>
+<body class="mode-list">
+
+<header class="nav" id="nav">
+  <button class="nav-title" id="navTitle" type="button"></button>
+</header>
+
+<div class="page" id="page">
+  <div class="col hero">
+    <div class="hero-top">
+      <p class="eyebrow" id="label"></p>
+      <p class="prog" id="prog">
+        <svg class="ring" viewBox="0 0 20 20" aria-hidden="true"><circle class="tr" cx="10" cy="10" r="8"/><circle class="fg" id="ringFg" cx="10" cy="10" r="8" stroke-dasharray="50.27" stroke-dashoffset="50.27"/></svg>
+        <span id="progText"></span>
+      </p>
+    </div>
+    <h1 class="lt" id="title"></h1>
+  </div>
+
+  <div class="palette" id="palette">
+    <div class="col"><div>
+      <div class="chips" id="chips" role="group" aria-label="シーンで絞り込み"></div>
+    </div></div>
+  </div>
+
+  <div class="col">
+    <section id="listenHead" hidden aria-label="聞き流しの設定">
+      <ul class="group form">
+        <li>
+          <label class="frow" for="gapSw" style="display:contents">
+            <span class="flabel">まねる間<small>聞いたあと、声に出してまねる時間をあける</small></span>
+          </label>
+          <span class="switch"><input type="checkbox" id="gapSw" role="switch"><span></span></span>
+        </li>
+        <li>
+          <span class="flabel" id="repLbl">リピート</span>
+          <div class="seg seg-sm" id="repSeg" role="radiogroup" aria-labelledby="repLbl" style="--n:3">
+            <span class="thumb" aria-hidden="true"></span>
+            <button type="button" role="radio" data-v="1">1回</button>
+            <button type="button" role="radio" data-v="2">2回</button>
+            <button type="button" role="radio" data-v="3">3回</button>
+          </div>
+        </li>
+        <li>
+          <span class="flabel" id="rateLbl">速さ</span>
+          <div class="seg seg-sm" id="rateSeg" role="radiogroup" aria-labelledby="rateLbl" style="--n:2">
+            <span class="thumb" aria-hidden="true"></span>
+            <button type="button" role="radio" data-v="0.8">ゆっくり</button>
+            <button type="button" role="radio" data-v="1">ふつう</button>
+          </div>
+        </li>
+      </ul>
+      <button type="button" class="btn btn-tint btn-wide" id="listenBtn"></button>
+    </section>
+
+    <div class="tools" id="tools">
+      <p class="count" id="count"></p>
+      <div class="toggles">
+        <button type="button" class="tg" id="hideEn" aria-pressed="false">英語を隠す</button>
+        <button type="button" class="tg" id="hideJa" aria-pressed="false">日本語を隠す</button>
+      </div>
+    </div>
+
+    <div id="list"></div>
+
+    <section id="practice" hidden aria-live="polite">
+      <div id="pCard">
+        <div class="pcard">
+          <div class="pmeta"><span><span id="pScene"></span><span class="wk" id="pWeak" hidden>まだ言えない</span></span><span id="pPos"></span></div>
+          <p class="pja" id="pJa"></p>
+          <div class="pen-wrap" id="pEnWrap" hidden>
+            <p class="pen" id="pEn" lang="en"></p>
+            <p class="ppt" id="pPt" hidden></p>
+            <button type="button" class="replay" id="pReplay"></button>
+          </div>
+        </div>
+        <div class="pactions">
+          <button type="button" class="btn btn-tint" id="pShow">英語を見る</button>
+          <button type="button" class="btn btn-gray" id="pAgain" hidden>まだ言えない</button>
+          <button type="button" class="btn btn-tint" id="pGot" hidden>言えた</button>
+        </div>
+      </div>
+      <div class="pdone" id="pDone" hidden>
+        <h2>ひと通り終わりました</h2>
+        <p id="pDoneText"></p>
+        <div class="acts">
+          <button type="button" class="btn btn-tint" id="pRestart">もう一周する</button>
+          <button type="button" class="btn btn-gray" id="pWeakOnly">まだ言えないものを練習する</button>
+        </div>
+      </div>
+      <div id="pEmpty"></div>
+    </section>
+  </div>
+</div>
+
+<div class="mini off" id="mini">
+  <button type="button" class="mini-open" id="miniOpen">
+    <span class="vh">再生中の画面を開く：</span>
+    <span class="mini-en" id="miniEn" lang="en"></span>
+    <span class="mini-ja" id="miniJa"></span>
+  </button>
+  <button type="button" class="ib" id="miniPlay" aria-label="再生"></button>
+  <button type="button" class="ib" id="miniNext" aria-label="次へ"></button>
+</div>
+
+<div class="hint" id="hint" role="note" hidden>
+  <p class="hint-tx"><b>ホーム画面に追加すると、アプリのように使えます</b><span id="hintHow"></span></p>
+  <button type="button" class="ib" id="hintX" aria-label="閉じる"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></button>
+</div>
+
+<nav class="tabbar" id="modes" role="tablist" aria-label="モード">
+  <button type="button" class="tab" role="tab" id="tab-list" data-mode="list" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9.5 6.5h10.5M9.5 12h10.5M9.5 17.5h10.5"/><circle cx="4.75" cy="6.5" r="1.35" fill="currentColor" stroke="none"/><circle cx="4.75" cy="12" r="1.35" fill="currentColor" stroke="none"/><circle cx="4.75" cy="17.5" r="1.35" fill="currentColor" stroke="none"/></svg><span>一覧</span></button>
+  <button type="button" class="tab" role="tab" id="tab-listen" data-mode="listen" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15.5V12a8 8 0 0 1 16 0v3.5"/><rect x="3.2" y="13.6" width="4.6" height="7" rx="2.1"/><rect x="16.2" y="13.6" width="4.6" height="7" rx="2.1"/></svg><span>聞き流し</span></button>
+  <button type="button" class="tab" role="tab" id="tab-practice" data-mode="practice" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.5c4.6 0 8.2 3 8.2 6.9s-3.6 6.9-8.2 6.9c-1 0-2-.1-2.9-.4L4.6 19.6l1.2-3.6C4.6 14.8 3.8 13.2 3.8 11.4 3.8 7.5 7.4 4.5 12 4.5z"/><path d="M8.6 11.4h.01M12 11.4h.01M15.4 11.4h.01" stroke-width="2.6"/></svg><span>練習</span></button>
+</nav>
+
+<div class="scrim" id="scrim"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="再生中" hidden>
+  <div class="grab" aria-hidden="true"></div>
+  <div class="s-top">
+    <button type="button" class="s-close" id="sClose" aria-label="閉じる"><span></span></button>
+    <p class="s-meta" id="sMeta"></p>
+    <span></span>
+  </div>
+  <div class="s-main">
+  <div class="s-art" id="sArt"><p class="s-en" id="sEn" lang="en"></p></div>
+  <p class="s-ja" id="sJa"></p>
+  <div class="s-prog">
+    <div class="segs" id="sSegs" aria-hidden="true"></div>
+    <div class="s-labels"><span id="sPhase"></span><span id="sRep"></span></div>
+  </div>
+  <div class="s-tr">
+    <button type="button" class="tb" id="sPrev" aria-label="前へ"></button>
+    <button type="button" class="tb big" id="sPlay" aria-label="再生"></button>
+    <button type="button" class="tb" id="sNext" aria-label="次へ"></button>
+  </div>
+  <div class="s-opts">
+    <button type="button" class="opt" id="oGap"></button>
+    <button type="button" class="opt" id="oRep"></button>
+    <button type="button" class="opt" id="oRate"></button>
+  </div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function(){
+'use strict';
+
+/* ---------- data ---------- */
+var PACK = window.PACK || {};
+var items = Array.isArray(PACK.items) ? PACK.items : [];
+if (PACK.kind === 'compare') items.forEach(function(it){
+  if (it._ja === undefined) { it._ja = it.ja; it.ja = (it.kana || '') + (it.ja && it.ja !== it.kana ? '（' + it.ja + '）' : ''); }
+});
+var total = items.length;
+var $ = function(id){ return document.getElementById(id); };
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function sceneOf(it){ return it && it.scene ? String(it.scene) : ''; }
+var scenes = [];
+items.forEach(function(it){ var s = sceneOf(it); if (scenes.indexOf(s) < 0) scenes.push(s); });
+var namedScenes = scenes.filter(Boolean);
+function srcOf(it){ return it.src || ((PACK.audioBase || 'audio/') + it.id + '.mp3'); }
+function durOf(it){ var d = Number(it.dur); return d > 0 ? d : 2; }
+function gapSec(it){ return durOf(it) * 1.5 + 0.5; }
+
+function enHTML(it){ return esc(it.en); }
+/* 日本語の見出し：ひらがなの切れ目でだけ改行させる */
+function jaBreak(s){ return esc(s).replace(/([ぁ-ゖ])(?=[^ぁ-ゖー、。！？」』）\s])/g, '$1<wbr>').replace(/([、。])/g, '$1<wbr>'); }
+
+/* ---------- storage ---------- */
+var KEY = 'phrasepack:' + (PACK.id || 'default');
+var S = { gap: true, repeat: 1, rate: 1, hide: '' };
+var done = new Set(), weak = new Set();
+try {
+  var raw = localStorage.getItem(KEY);
+  var o = raw ? JSON.parse(raw) : null;
+  if (o && typeof o === 'object') {
+    if (Array.isArray(o.done)) done = new Set(o.done.map(String));
+    if (Array.isArray(o.weak)) weak = new Set(o.weak.map(String));
+    if (typeof o.gap === 'boolean') S.gap = o.gap;
+    if ([1,2,3].indexOf(o.repeat) >= 0) S.repeat = o.repeat;
+    if (o.rate === 0.8 || o.rate === 1) S.rate = o.rate;
+    if (o.hide === 'en' || o.hide === 'ja') S.hide = o.hide;
+  }
+} catch (e) {}
+function save(){
+  try { localStorage.setItem(KEY, JSON.stringify({ done: Array.from(done), weak: Array.from(weak), gap: S.gap, repeat: S.repeat, rate: S.rate, hide: S.hide })); } catch (e) {}
+}
+
+/* ---------- icons (SF Symbols 風) ---------- */
+var IC = {
+  play: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 4.6v14.8L19.4 12z" fill="currentColor" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>',
+  pause: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5.2" y="3.8" width="4.8" height="16.4" rx="1.4" fill="currentColor"/><rect x="14" y="3.8" width="4.8" height="16.4" rx="1.4" fill="currentColor"/></svg>',
+  fwd: '<svg class="i-fwd" viewBox="0 0 26 24" aria-hidden="true"><path d="M2.6 5.4v13.2L12.8 12v6.6L23.4 12 12.8 5.4V12z" fill="currentColor" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg>',
+  back: '<svg class="i-fwd" viewBox="0 0 26 24" aria-hidden="true"><path d="M23.4 5.4v13.2L13.2 12v6.6L2.6 12l10.6-6.6V12z" fill="currentColor" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg>',
+  down: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  check: '<svg class="ck" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9.2" fill="currentColor"/><path d="M6 10.4l2.7 2.7L14.2 7.4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  speaker: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 9.2h3.2L11.5 5v14l-4.8-4.2H3.5a1 1 0 0 1-1-1V10.2a1 1 0 0 1 1-1z" fill="currentColor"/><path d="M15 8.6a4.6 4.6 0 0 1 0 6.8M17.9 6a8.4 8.4 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>'
+};
+var rowPlay = '<svg class="ip" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 4.6v14.8L19.4 12z" fill="currentColor" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></svg>'
+            + '<svg class="ia" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.2" fill="currentColor"/><rect x="14" y="4" width="5" height="16" rx="1.2" fill="currentColor"/></svg>';
+
+/* ---------- elements ---------- */
+var body = document.body, root = document.documentElement;
+var listEl = $('list'), chipsEl = $('chips'), sheet = $('sheet'), scrim = $('scrim'), mini = $('mini');
+var reduceMQ = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+
+/* ---------- ui state ---------- */
+var mode = 'list';
+var filter = 'all';
+var sheetOpen = false;
+
+function visible(){
+  var out = [];
+  scenes.forEach(function(sc){
+    items.forEach(function(it, i){
+      if (sceneOf(it) !== sc) return;
+      if (filter === 'weak' && !weak.has(String(it.id))) return;
+      if (filter !== 'all' && filter !== 'weak' && sc !== filter) return;
+      out.push(i);
+    });
+  });
+  return out;
+}
+
+/* ---------- header ---------- */
+document.title = PACK.title || document.title;
+$('label').textContent = PACK.label || '';
+$('label').hidden = !PACK.label;
+$('title').innerHTML = jaBreak(PACK.title || '');
+$('navTitle').textContent = PACK.title || '';
+try { document.querySelector('meta[name="apple-mobile-web-app-title"]').content = PACK.short || PACK.title || 'フレーズ集'; } catch (e) {}
+
+function updateProgress(){
+  var n = items.filter(function(it){ return done.has(String(it.id)); }).length;
+  $('progText').innerHTML = '言えた <span class="n">' + n + '</span> / ' + total;
+  var C = 50.27, p = total ? n / total : 0;
+  $('ringFg').setAttribute('stroke-dashoffset', (C * (1 - p)).toFixed(2));
+}
+
+/* ---------- chips ---------- */
+function renderChips(){
+  var weakN = items.filter(function(it){ return weak.has(String(it.id)); }).length;
+  var list = [{ v: 'all', t: 'すべて' }].concat(namedScenes.map(function(s){ return { v: s, t: s }; }), [{ v: 'weak', t: 'まだ言えない', c: weakN }]);
+  chipsEl.innerHTML = list.map(function(c){
+    return '<button type="button" class="chip" data-f="' + esc(c.v) + '" aria-pressed="' + (filter === c.v) + '">' + esc(c.t)
+      + (c.c ? '<span class="c">' + c.c + '</span>' : '') + '</button>';
+  }).join('');
+}
+function revealChip(){
+  var b = chipsEl.querySelector('.chip[aria-pressed="true"]'); if (!b) return;
+  var l = b.offsetLeft - 16, r = b.offsetLeft + b.offsetWidth + 16 - chipsEl.clientWidth;
+  if (chipsEl.scrollLeft > l) chipsEl.scrollLeft = l;
+  else if (chipsEl.scrollLeft < r) chipsEl.scrollLeft = r;
+}
+chipsEl.addEventListener('click', function(e){
+  var b = e.target.closest('.chip'); if (!b) return;
+  setFilter(b.getAttribute('data-f'));
+});
+function setFilter(f){
+  filter = f;
+  renderChips();
+  revealChip();
+  if (mode === 'practice') enterPractice();
+  else renderList();
+  updateListenBtn();
+}
+
+/* ---------- list ---------- */
+function rowHTML(i){
+  var it = items[i], id = String(it.id);
+  return '<li><button type="button" class="row' + (done.has(id) ? ' done' : '') + '" data-i="' + i + '">'
+    + '<span class="lead" aria-hidden="true"><span class="num">' + (i + 1) + '</span>' + IC.check + '<span class="bars"><i></i><i></i><i></i></span></span>'
+    + '<span class="txt"><span class="en" lang="en"><span class="t">' + enHTML(it) + '</span></span><span class="ja"><span class="t">' + esc(it.ja) + '</span></span>'
+    + (it.point ? '<span class="pt">' + esc(it.point) + '</span>' : '') + '</span>'
+    + '<span class="play" aria-hidden="true">' + rowPlay + '</span>'
+    + (done.has(id) ? '<span class="vh">（言えた）</span>' : '')
+    + '</button></li>';
+}
+function emptyHTML(){
+  if (filter === 'weak') return '<div class="empty"><h2>まだ言えないフレーズはありません</h2><p>' + jaBreak('練習で「まだ言えない」を押したフレーズが、ここに入ります。') + '</p></div>';
+  return '<div class="empty"><h2>フレーズがありません</h2></div>';
+}
+function renderList(){
+  var order = visible();
+  $('count').textContent = order.length ? order.length + '本' : '';
+  if (!order.length) { listEl.innerHTML = emptyHTML(); markRows(); return; }
+  var html = '', cur = null, many = namedScenes.length > 0;
+  order.forEach(function(i){
+    var sc = sceneOf(items[i]);
+    if (sc !== cur) {
+      if (cur !== null) html += '</ul></section>';
+      html += '<section class="sec">' + (many && sc ? '<h2 class="sec-h">' + esc(sc) + '</h2>' : '') + '<ul class="group">';
+      cur = sc;
+    }
+    html += rowHTML(i);
+  });
+  html += '</ul></section>';
+  var planned = Number(PACK.total_planned);
+  if (filter === 'all' && planned > total) html += '<p class="foot">サンプル ' + total + '本（完成版は' + planned + '本）</p>';
+  listEl.innerHTML = html;
+  markRows();
+}
+listEl.addEventListener('click', function(e){
+  var b = e.target.closest('.row'); if (!b) return;
+  var i = +b.getAttribute('data-i');
+  var order = visible(), pos = order.indexOf(i);
+  if (pos < 0) return;
+  if (mode === 'listen') {
+    if (P.active && P.cont && P.order[P.pos] === i && sameOrder(order)) { togglePlay(); return; }
+    startAt(order, pos, true);
+  } else {
+    startAt(order, pos, false);
+  }
+});
+
+function applyHide(){
+  body.classList.toggle('hide-en', S.hide === 'en');
+  body.classList.toggle('hide-ja', S.hide === 'ja');
+  $('hideEn').setAttribute('aria-pressed', S.hide === 'en');
+  $('hideJa').setAttribute('aria-pressed', S.hide === 'ja');
+}
+$('hideEn').addEventListener('click', function(){ S.hide = S.hide === 'en' ? '' : 'en'; applyHide(); save(); });
+$('hideJa').addEventListener('click', function(){ S.hide = S.hide === 'ja' ? '' : 'ja'; applyHide(); save(); });
+
+/* ---------- modes (segmented) ---------- */
+var modeTabs = Array.prototype.slice.call(document.querySelectorAll('#modes [role="tab"]'));
+var MODES = ['list', 'listen', 'practice'];
+modeTabs.forEach(function(t){
+  t.addEventListener('click', function(){ setMode(t.getAttribute('data-mode')); });
+  t.addEventListener('keydown', function(e){
+    var k = MODES.indexOf(mode), n = k;
+    if (e.key === 'ArrowRight') n = Math.min(2, k + 1);
+    else if (e.key === 'ArrowLeft') n = Math.max(0, k - 1);
+    else return;
+    e.preventDefault(); setMode(MODES[n]); modeTabs[n].focus();
+  });
+});
+function setMode(m){
+  var prev = mode;
+  mode = m;
+  body.classList.remove('mode-list', 'mode-listen', 'mode-practice');
+  body.classList.add('mode-' + m);
+  var k = MODES.indexOf(m);
+  $('modes').style.setProperty('--i', k);
+  modeTabs.forEach(function(t, j){ t.setAttribute('aria-selected', j === k); t.tabIndex = j === k ? 0 : -1; });
+  $('listenHead').hidden = m !== 'listen';
+  $('tools').hidden = m === 'practice';
+  listEl.hidden = m === 'practice';
+  $('practice').hidden = m !== 'practice';
+  if (m === 'practice') {
+    if (P.playing) pause();
+    enterPractice();
+  } else {
+    if (prev === 'practice' && P.solo) { P.active = false; P.solo = false; }
+    renderList();
+  }
+  updateListenBtn();
+  updateMini();
+  if (prev && prev !== m) window.scrollTo(0, 0);
+}
+
+/* ---------- listen settings ---------- */
+function setSeg(el, val){
+  var bs = Array.prototype.slice.call(el.querySelectorAll('button'));
+  var k = 0;
+  bs.forEach(function(b, j){ var on = String(b.getAttribute('data-v')) === String(val); if (on) k = j; b.setAttribute('aria-checked', on); b.tabIndex = on ? 0 : -1; });
+  el.style.setProperty('--i', k);
+}
+function segKeys(el, apply){
+  el.addEventListener('click', function(e){ var b = e.target.closest('button'); if (b) apply(b.getAttribute('data-v')); });
+  el.addEventListener('keydown', function(e){
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    var bs = Array.prototype.slice.call(el.querySelectorAll('button'));
+    var k = bs.findIndex(function(b){ return b.getAttribute('aria-checked') === 'true'; });
+    k = Math.max(0, Math.min(bs.length - 1, k + (e.key === 'ArrowRight' ? 1 : -1)));
+    e.preventDefault(); apply(bs[k].getAttribute('data-v')); bs[k].focus();
+  });
+}
+segKeys($('repSeg'), function(v){ S.repeat = +v; settingsChanged(); });
+segKeys($('rateSeg'), function(v){ S.rate = +v; settingsChanged(); });
+$('gapSw').addEventListener('change', function(){ S.gap = this.checked; settingsChanged(); });
+function settingsChanged(){
+  if (P.phase === 'audio') setRate(S.rate);
+  if (P.rep >= (P.cont ? S.repeat : 1)) P.rep = Math.max(0, S.repeat - 1);
+  renderSettings(); renderSegs(); save();
+}
+function renderSettings(){
+  $('gapSw').checked = S.gap;
+  setSeg($('repSeg'), S.repeat);
+  setSeg($('rateSeg'), S.rate);
+  $('oGap').innerHTML = '<span class="k">まねる間</span>' + (S.gap ? 'オン' : 'オフ');
+  $('oGap').setAttribute('aria-pressed', S.gap);
+  $('oRep').innerHTML = '<span class="k">リピート</span>' + S.repeat + '回';
+  $('oRate').innerHTML = '<span class="k">速さ</span>' + (S.rate < 1 ? 'ゆっくり' : 'ふつう');
+  $('oGap').hidden = $('oRep').hidden = !P.cont;
+}
+$('oGap').addEventListener('click', function(){ S.gap = !S.gap; settingsChanged(); });
+$('oRep').addEventListener('click', function(){ S.repeat = S.repeat % 3 + 1; settingsChanged(); });
+$('oRate').addEventListener('click', function(){ S.rate = S.rate < 1 ? 1 : 0.8; settingsChanged(); });
+
+function sameOrder(order){ return P.order.length === order.length && P.order.every(function(v, j){ return v === order[j]; }); }
+function updateListenBtn(){
+  var b = $('listenBtn');
+  var resumable = P.active && P.cont && !P.finished && sameOrder(visible());
+  var label, icon;
+  if (resumable && P.playing) { label = '一時停止'; icon = IC.pause; }
+  else if (resumable && (P.phase !== 'idle' || P.pos > 0)) { label = '続きから再生'; icon = IC.play; }
+  else { label = '最初から再生'; icon = IC.play; }
+  b.innerHTML = icon + '<span>' + label + '</span>';
+  b.disabled = !visible().length;
+  b.style.opacity = b.disabled ? .4 : '';
+}
+$('listenBtn').addEventListener('click', function(){
+  var order = visible(); if (!order.length) return;
+  var resumable = P.active && P.cont && !P.finished && sameOrder(order);
+  if (resumable && (P.playing || P.phase !== 'idle' || P.pos > 0)) { togglePlay(); return; }
+  startAt(order, 0, true);
+});
+
+/* ---------- player ---------- */
+var audio = new Audio();
+audio.preload = 'auto';
+var P = { order: [], pos: 0, cont: false, rep: 0, phase: 'idle', playing: false, active: false, finished: false, solo: false };
+var switching = false;
+function cur(){ return P.active ? items[P.order[P.pos]] : null; }
+function setRate(r){
+  try { audio.defaultPlaybackRate = r; audio.playbackRate = r; } catch (e) {}
+  try { audio.preservesPitch = true; audio.webkitPreservesPitch = true; audio.mozPreservesPitch = true; } catch (e) {}
+}
+
+/* まねる間は「無音の音声」を流す（ロック画面でも途切れずに続くように） */
+var silCache = {};
+function silenceURL(sec){
+  var ds = Math.max(1, Math.round(sec * 10));
+  if (silCache[ds] !== undefined) return silCache[ds];
+  var url = '';
+  try {
+    var rate = 8000, n = Math.round(rate * ds / 10), buf = new ArrayBuffer(44 + n * 2), v = new DataView(buf);
+    var w = function(o, s){ for (var k = 0; k < s.length; k++) v.setUint8(o + k, s.charCodeAt(k)); };
+    w(0, 'RIFF'); v.setUint32(4, 36 + n * 2, true); w(8, 'WAVE'); w(12, 'fmt ');
+    v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+    v.setUint32(24, rate, true); v.setUint32(28, rate * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+    w(36, 'data'); v.setUint32(40, n * 2, true);
+    url = URL.createObjectURL(new Blob([buf], { type: 'audio/wav' }));
+  } catch (e) { url = ''; }
+  silCache[ds] = url;
+  return url;
+}
+
+var gapTimer = 0;
+function playPhase(phase){
+  var it = cur(); if (!it) return;
+  clearTimeout(gapTimer);
+  P.phase = phase; P.playing = true; P.finished = false;
+  if (phase === 'gap') {
+    var u = silenceURL(gapSec(it));
+    if (!u) { gapTimer = setTimeout(afterRep, gapSec(it) * 1000); sync(); return; }
+    switching = true; audio.src = u; setRate(1);
+  } else {
+    switching = true; audio.src = srcOf(it); setRate(S.rate);
+  }
+  var pr;
+  try { pr = audio.play(); } catch (e) { pr = null; }
+  if (pr && pr.then) {
+    pr.then(function(){ switching = false; }, function(err){
+      switching = false;
+      if (err && err.name === 'AbortError') return;
+      P.playing = false; sync();
+    });
+  } else switching = false;
+  sync();
+}
+function afterRep(){
+  var reps = P.cont ? S.repeat : 1;
+  P.rep++;
+  if (P.rep < reps) { playPhase('audio'); return; }
+  if (P.cont && P.pos < P.order.length - 1) { P.pos++; P.rep = 0; itemChanged(true); playPhase('audio'); return; }
+  P.playing = false; P.phase = 'idle'; P.rep = 0; P.finished = true;
+  sync();
+}
+audio.addEventListener('ended', function(){
+  if (P.phase === 'audio' && P.cont && S.gap) { playPhase('gap'); return; }
+  afterRep();
+});
+audio.addEventListener('pause', function(){
+  if (switching || audio.ended || !P.playing) return;
+  P.playing = false; sync();
+});
+audio.addEventListener('play', function(){
+  if (!P.playing && P.active) { P.playing = true; sync(); }
+});
+audio.addEventListener('error', function(){
+  if (!P.playing || !audio.getAttribute('src')) return;
+  if (P.cont && P.pos < P.order.length - 1) {
+    setTimeout(function(){ P.pos++; P.rep = 0; itemChanged(true); playPhase('audio'); }, 300);
+  } else { P.playing = false; P.phase = 'idle'; sync(); }
+});
+
+function startAt(order, pos, cont, solo){
+  P.order = order.slice(); P.pos = pos; P.cont = !!cont; P.rep = 0; P.active = true; P.finished = false; P.solo = !!solo;
+  itemChanged(false);
+  renderSettings();
+  playPhase('audio');
+}
+function prepare(order, pos, cont){
+  P.order = order.slice(); P.pos = Math.max(0, Math.min(order.length - 1, pos)); P.cont = !!cont;
+  P.rep = 0; P.active = true; P.phase = 'idle'; P.playing = false; P.finished = false;
+  itemChanged(false); renderSettings(); sync();
+}
+function pause(){ if (!P.playing) return; P.playing = false; clearTimeout(gapTimer); try { audio.pause(); } catch (e) {} sync(); }
+function togglePlay(){
+  if (!P.active) return;
+  if (P.playing) { pause(); return; }
+  if (P.phase === 'idle' || P.finished) { P.rep = 0; playPhase('audio'); return; }
+  P.playing = true;
+  var pr; try { pr = audio.play(); } catch (e) {}
+  if (pr && pr.catch) pr.catch(function(){ P.playing = false; sync(); });
+  sync();
+}
+function go(d){
+  if (!P.active) return;
+  var np = P.pos + d;
+  if (np < 0) { P.rep = 0; playPhase('audio'); return; }
+  if (np >= P.order.length) return;
+  P.pos = np; P.rep = 0; itemChanged(false); playPhase('audio');
+}
+
+/* ---------- media session ---------- */
+var MS = 'mediaSession' in navigator ? navigator.mediaSession : null;
+if (MS) {
+  var h = function(a, f){ try { MS.setActionHandler(a, f); } catch (e) {} };
+  h('play', function(){ if (!P.playing) togglePlay(); });
+  h('pause', function(){ pause(); });
+  h('stop', function(){ pause(); });
+  h('previoustrack', function(){ go(-1); });
+  h('nexttrack', function(){ go(1); });
+}
+function mediaMeta(){
+  var it = cur(); if (!MS || !it) return;
+  try { MS.metadata = new MediaMetadata({ title: it.en || '', artist: it.ja || '', album: PACK.title || '' }); } catch (e) {}
+}
+
+/* ---------- item change / sync ---------- */
+var markedRow = null;
+function markRows(){
+  if (markedRow) markedRow.classList.remove('cur', 'playing');
+  markedRow = null;
+  if (!P.active || mode === 'practice') return;
+  var r = listEl.querySelector('.row[data-i="' + P.order[P.pos] + '"]');
+  if (!r) return;
+  r.classList.add('cur');
+  r.classList.toggle('playing', P.playing);
+  markedRow = r;
+}
+function itemChanged(auto){
+  var it = cur(); if (!it) return;
+  $('miniEn').innerHTML = enHTML(it);
+  $('miniJa').textContent = it.ja || '';
+  $('sEn').innerHTML = enHTML(it);
+  if (sheetOpen) fitPhrase();
+  $('sJa').textContent = (it.ja || '') + (it.point ? '\n' + it.point : '');
+  var sc = sceneOf(it);
+  $('sMeta').textContent = (sc ? sc + '　' : '') + (P.pos + 1) + ' / ' + P.order.length;
+  renderSegs();
+  mediaMeta();
+  markRows();
+  if (auto && mode === 'listen' && !sheetOpen) scrollToCurrent();
+}
+function scrollToCurrent(){
+  if (!markedRow) return;
+  var r = markedRow.getBoundingClientRect();
+  var top = $('palette').getBoundingClientRect().bottom + 8;
+  var bottom = window.innerHeight - (mini.classList.contains('off') ? 90 : 160);
+  if (r.top >= top && r.bottom <= bottom) return;
+  try { markedRow.scrollIntoView({ block: 'center', behavior: reduceMQ.matches ? 'auto' : 'smooth' }); } catch (e) { markedRow.scrollIntoView(); }
+}
+
+var segFills = [];
+function segLayout(){
+  var it = cur(); if (!it) return [];
+  var reps = P.cont ? S.repeat : 1, out = [];
+  for (var r = 0; r < reps; r++) {
+    out.push({ k: 'a', w: durOf(it) / S.rate });
+    if (P.cont && S.gap) out.push({ k: 'g', w: gapSec(it) });
+  }
+  return out;
+}
+function renderSegs(){
+  var L = segLayout();
+  $('sSegs').innerHTML = L.map(function(s){ return '<i class="' + s.k + '" style="flex-grow:' + s.w.toFixed(3) + '"><u></u></i>'; }).join('');
+  segFills = Array.prototype.slice.call($('sSegs').querySelectorAll('u'));
+  paintSegs();
+}
+function paintSegs(){
+  var per = (P.cont && S.gap) ? 2 : 1;
+  var idx = P.rep * per + (P.phase === 'gap' ? 1 : 0), frac = 0;
+  if (P.finished) idx = segFills.length;
+  else if (P.phase === 'idle') { idx = 0; frac = 0; }
+  else { var d = audio.duration; frac = d && isFinite(d) ? Math.min(1, audio.currentTime / d) : 0; }
+  for (var k = 0; k < segFills.length; k++) segFills[k].style.transform = 'scaleX(' + (k < idx ? 1 : k === idx ? frac : 0) + ')';
+  var ph = $('sPhase'), showPhase = P.cont && S.gap && P.active && !P.finished && P.phase !== 'idle';
+  ph.textContent = showPhase ? (P.phase === 'gap' ? 'まねる' : '聞く') : '';
+  ph.className = showPhase && P.phase === 'gap' ? 'now-g' : '';
+  $('sRep').textContent = P.cont && S.repeat > 1 && !P.finished ? (Math.min(P.rep + 1, S.repeat) + ' / ' + S.repeat + '回') : '';
+}
+var raf = 0;
+function loop(){
+  raf = 0;
+  if (!sheetOpen) return;
+  paintSegs();
+  if (P.playing) raf = requestAnimationFrame(loop);
+}
+
+function sync(){
+  var playing = P.playing;
+  $('miniPlay').innerHTML = playing ? IC.pause : IC.play;
+  $('miniPlay').setAttribute('aria-label', playing ? '一時停止' : '再生');
+  $('sPlay').innerHTML = playing ? IC.pause : IC.play;
+  $('sPlay').setAttribute('aria-label', playing ? '一時停止' : '再生');
+  $('miniNext').disabled = $('sNext').disabled = !P.active || P.pos >= P.order.length - 1;
+  $('miniNext').style.opacity = $('miniNext').disabled ? .3 : '';
+  if (markedRow) markedRow.classList.toggle('playing', playing);
+  else markRows();
+  updateListenBtn();
+  updateMini();
+  if (MS) { try { MS.playbackState = playing ? 'playing' : (P.active ? 'paused' : 'none'); } catch (e) {} }
+  paintSegs();
+  if (sheetOpen && playing && !raf) raf = requestAnimationFrame(loop);
+}
+function updateMini(){
+  var show = P.active && !P.solo && mode !== 'practice';
+  mini.classList.toggle('off', !show);
+  mini.inert = !show || sheetOpen;
+  mini.setAttribute('aria-hidden', String(!show));
+  body.classList.toggle('has-mini', show);
+  if (show && HINT.on) hintDone();   // 再生を始めたら、案内は見たことにする
+  $('hint').hidden = !HINT.on || show;
+  body.classList.toggle('has-hint', HINT.on && !show);
+}
+
+/* ---------- ホーム画面の案内（全パック共通で1回だけ） ---------- */
+var HINT = (function(){
+  var KEY = 'fbp-home-hint', ua = navigator.userAgent || '';
+  var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var android = /Android/.test(ua), line = /\sLine\//i.test(ua);
+  var standalone = false;
+  try { standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true; } catch (e) {}
+  var seen = false;
+  try { seen = localStorage.getItem(KEY) === '1'; } catch (e) {}
+  var how = ios ? (line ? 'メニューから「Safariで開く」を選び、共有ボタンから「ホーム画面に追加」' : '共有ボタンから「ホーム画面に追加」')
+          : android ? (line ? 'メニューから「ブラウザで開く」を選び、「ホーム画面に追加」' : 'メニュー（︙）から「ホーム画面に追加」')
+          : '';
+  return { KEY: KEY, how: how, on: (ios || android) && !standalone && !seen };
+})();
+function hintDone(){
+  HINT.on = false;
+  try { localStorage.setItem(HINT.KEY, '1'); } catch (e) {}
+}
+$('hintHow').textContent = HINT.how;
+$('hintX').addEventListener('click', function(){ hintDone(); updateMini(); });
+
+$('miniPlay').innerHTML = IC.play;
+$('miniNext').innerHTML = IC.fwd;
+$('sPrev').innerHTML = IC.back;
+$('sNext').innerHTML = IC.fwd;
+$('sClose').firstElementChild.innerHTML = IC.down;
+$('miniPlay').addEventListener('click', togglePlay);
+$('miniNext').addEventListener('click', function(){ go(1); });
+$('sPlay').addEventListener('click', togglePlay);
+$('sPrev').addEventListener('click', function(){ go(-1); });
+$('sNext').addEventListener('click', function(){ go(1); });
+
+/* ---------- sheet ---------- */
+var lastFocus = null, closeT = 0;
+function openSheet(instant){
+  if (!P.active) return;
+  clearTimeout(closeT);
+  lastFocus = document.activeElement;
+  sheet.hidden = false;
+  sheetOpen = true;
+  $('nav').inert = $('page').inert = $('modes').inert = true; mini.inert = true;
+  root.classList.add('locked');
+  renderSettings(); renderSegs(); fitPhrase();
+  if (instant) { sheet.classList.add('open'); scrim.classList.add('open'); }
+  else { void sheet.offsetHeight; sheet.classList.add('open'); scrim.classList.add('open'); }
+  if (!instant) { try { $('sClose').focus({ preventScroll: true }); } catch (e) {} }
+  sync();
+}
+function closeSheet(){
+  if (!sheetOpen) return;
+  sheetOpen = false;
+  sheet.style.transform = '';
+  sheet.classList.remove('open'); scrim.classList.remove('open');
+  $('nav').inert = $('page').inert = $('modes').inert = false;
+  root.classList.remove('locked');
+  updateMini();
+  closeT = setTimeout(function(){ if (!sheetOpen) sheet.hidden = true; }, reduceMQ.matches ? 0 : 520);
+  var f = lastFocus && document.contains(lastFocus) && !lastFocus.closest('.sheet') ? lastFocus : $('miniOpen');
+  try { f.focus({ preventScroll: true }); } catch (e) {}
+  if (mode === 'listen') scrollToCurrent();
+}
+$('miniOpen').addEventListener('click', function(){ openSheet(false); });
+$('sClose').addEventListener('click', closeSheet);
+scrim.addEventListener('click', closeSheet);
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && sheetOpen) closeSheet(); });
+
+/* フレーズを枠いっぱいの大きさに合わせる（短いほど大きく） */
+function fitPhrase(){
+  var el = $('sEn'), box = $('sArt');
+  var W = box.clientWidth, Hb = box.clientHeight;
+  if (!W || !Hb) return;
+  el.classList.remove('brk');
+  var lo = 28, hi = Math.max(lo, Math.min(84, W * 0.215));
+  for (var k = 0; k < 9; k++) {
+    var mid = (lo + hi) / 2;
+    el.style.fontSize = mid + 'px';
+    if (el.scrollWidth <= W + 0.5 && el.offsetHeight <= Hb) lo = mid; else hi = mid;
+  }
+  el.style.fontSize = Math.floor(lo) + 'px';
+  if (el.scrollWidth > W + 0.5) el.classList.add('brk');
+}
+window.addEventListener('resize', function(){ if (sheetOpen) fitPhrase(); });
+
+/* 下にスワイプで閉じる */
+(function(){
+  var y0 = 0, dy = 0, dragging = false;
+  sheet.addEventListener('pointerdown', function(e){
+    if (e.button || e.target.closest('button') || sheet.scrollTop > 0) return;
+    dragging = true; y0 = e.clientY; dy = 0;
+    sheet.classList.add('drag');
+    try { sheet.setPointerCapture(e.pointerId); } catch (er) {}
+  });
+  sheet.addEventListener('pointermove', function(e){
+    if (!dragging) return;
+    dy = Math.max(0, e.clientY - y0);
+    sheet.style.transform = 'translateY(' + dy + 'px)';
+  });
+  function end(){
+    if (!dragging) return;
+    dragging = false;
+    sheet.classList.remove('drag');
+    if (dy > 110) closeSheet(); else sheet.style.transform = '';
+  }
+  sheet.addEventListener('pointerup', end);
+  sheet.addEventListener('pointercancel', end);
+})();
+
+/* ---------- practice ---------- */
+var PR = { order: [], pos: 0, revealed: false, finished: false };
+function enterPractice(fromStart){
+  PR.order = visible();
+  PR.revealed = false; PR.finished = false;
+  if (fromStart) PR.pos = 0;
+  else {
+    var k = PR.order.findIndex(function(i){ return !done.has(String(items[i].id)); });
+    PR.pos = k < 0 ? 0 : k;
+  }
+  renderPractice();
+}
+function renderPractice(){
+  var has = PR.order.length > 0;
+  $('pEmpty').innerHTML = has ? '' : emptyHTML();
+  $('pCard').hidden = !has || PR.finished;
+  $('pDone').hidden = !has || !PR.finished;
+  if (!has) return;
+  if (PR.finished) {
+    var n = PR.order.filter(function(i){ return done.has(String(items[i].id)); }).length;
+    $('pDoneText').textContent = '言えた ' + n + ' / ' + PR.order.length;
+    var wn = items.filter(function(it){ return weak.has(String(it.id)); }).length;
+    $('pWeakOnly').hidden = !wn || filter === 'weak';
+    return;
+  }
+  var it = items[PR.order[PR.pos]];
+  $('pScene').textContent = sceneOf(it);
+  $('pWeak').hidden = !weak.has(String(it.id));
+  $('pPos').textContent = (PR.pos + 1) + ' / ' + PR.order.length;
+  $('pJa').textContent = it.ja || '';
+  $('pEn').innerHTML = enHTML(it);
+  $('pPt').textContent = it.point || ''; $('pPt').hidden = !it.point;
+  $('pEnWrap').hidden = !PR.revealed;
+  $('pShow').hidden = PR.revealed;
+  $('pAgain').hidden = $('pGot').hidden = !PR.revealed;
+}
+$('pReplay').innerHTML = IC.speaker + '<span>もう一度聞く</span>';
+function practicePlay(){ startAt([PR.order[PR.pos]], 0, false, true); }
+$('pShow').addEventListener('click', function(){
+  PR.revealed = true; renderPractice(); practicePlay();
+  $('pGot').focus({ preventScroll: true });
+});
+$('pReplay').addEventListener('click', practicePlay);
+function practiceNext(){
+  pause();
+  PR.revealed = false;
+  if (PR.pos < PR.order.length - 1) PR.pos++;
+  else PR.finished = true;
+  renderPractice(); updateProgress(); renderChips();
+  var f = PR.finished ? $('pRestart') : $('pShow');
+  try { f.focus({ preventScroll: true }); } catch (e) {}
+}
+$('pGot').addEventListener('click', function(){
+  var id = String(items[PR.order[PR.pos]].id);
+  done.add(id); weak.delete(id); save(); practiceNext();
+});
+$('pAgain').addEventListener('click', function(){
+  var id = String(items[PR.order[PR.pos]].id);
+  weak.add(id); done.delete(id); save(); practiceNext();
+});
+$('pRestart').addEventListener('click', function(){ enterPractice(true); $('pShow').focus({ preventScroll: true }); });
+$('pWeakOnly').addEventListener('click', function(){ setFilter('weak'); });
+
+/* ---------- large title collapse ---------- */
+var ticking = false;
+function onScroll(){
+  if (ticking) return; ticking = true;
+  requestAnimationFrame(function(){
+    ticking = false;
+    var navH = $('nav').offsetHeight || 44;
+    body.classList.toggle('collapsed', $('title').getBoundingClientRect().bottom < navH);
+    body.classList.toggle('stuck', $('palette').getBoundingClientRect().top <= navH + 0.5);
+  });
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('resize', onScroll);
+$('navTitle').addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: reduceMQ.matches ? 'auto' : 'smooth' }); });
+
+/* ---------- init ---------- */
+var H = location.hash.replace(/^#/, '').split('&').filter(Boolean);
+function hv(k){ for (var j = 0; j < H.length; j++) { var p = H[j].split('='); if (p[0] === k) return p.length > 1 ? decodeURIComponent(p[1]) : true; } return null; }
+if (hv('hint')) { HINT.on = true; HINT.how = HINT.how || '共有ボタンから「ホーム画面に追加」'; $('hintHow').textContent = HINT.how; }
+if (hv('dark')) root.setAttribute('data-theme', 'dark');
+if (hv('light')) root.setAttribute('data-theme', 'light');
+var hh = hv('hide'); if (hh === 'en' || hh === 'ja') S.hide = hh;
+if (hv('demo')) { [0, 1, 3, 6].forEach(function(k){ if (items[k]) done.add(String(items[k].id)); }); if (items[4]) weak.add(String(items[4].id)); }
+var hf = hv('filter'); if (typeof hf === 'string' && (hf === 'weak' || namedScenes.indexOf(hf) >= 0)) filter = hf;
+
+applyHide();
+renderSettings();
+renderChips();
+revealChip();
+updateProgress();
+var startMode = hv('practice') ? 'practice' : hv('listen') ? 'listen' : 'list';
+setMode(startMode);
+
+var hn = hv('now'), hs = hv('sheet');
+if ((hn || hs) && startMode !== 'practice' && visible().length) {
+  var n0 = parseInt(typeof hs === 'string' ? hs : typeof hn === 'string' ? hn : '1', 10) || 1;
+  prepare(visible(), n0 - 1, startMode === 'listen');
+  if (hs) openSheet(true);
+}
+if (startMode === 'practice' && hv('reveal') && PR.order.length) { PR.revealed = true; renderPractice(); }
+var hy = parseInt(hv('y'), 10); if (hy > 0) window.scrollTo(0, hy);
+onScroll();
+sync();
+})();
+</script>
+</body>
+</html>
